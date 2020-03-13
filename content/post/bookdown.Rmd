@@ -1,0 +1,18 @@
+---
+title: "blogdown"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(blogdown)
+```
+```{r}
+blogdown::new_site(theme = "zwbetz-gh/cupper-hugo-theme")
+
+blogdown::serve_site()
+```
+
