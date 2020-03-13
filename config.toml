@@ -1,0 +1,4 @@
+theme = "cupper-hugo-theme"
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "FinViz"
