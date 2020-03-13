@@ -13,10 +13,10 @@
     
     <item>
       <title>Katex Math Typesetting</title>
-      <link>/post/katex-math-typesetting/</link>
+      <link>/katex-math-typesetting/</link>
       <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/katex-math-typesetting/</guid>
+      <guid>/katex-math-typesetting/</guid>
       <description>Enable Katex in the config file by setting the katex param to true. This will import the necessary Katex CSS/JS.
 Note: Use the online reference of supported TeX functions.
 Some math:
