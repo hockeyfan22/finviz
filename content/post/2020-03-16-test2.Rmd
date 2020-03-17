@@ -1,18 +1,11 @@
 ---
-title: "Corona Vix"
-author: "FinViz"
-date: "3/16/2020"
-output: pdf_document
-tags:
-- Volatility
-- Vix
-- ggplot
-categories: R
+title: Test2
+author: ''
+date: '2020-03-16'
+slug: test2
+categories: []
+tags: []
 ---
-
-```{r setup, include=TRUE}
-knitr::opts_chunk$set(eval = FALSE)
-```
 
 ```{r}
 
@@ -32,7 +25,6 @@ font_add_google("IBM Plex Mono", "IBM Plex Mono")
 font_add_google("IBM Plex Sans", "IBM Plex Sans")
 
 showtext_auto()
-getwd()
 ```
 
 ## The VIX Fear Gauge Is Soaring
@@ -143,7 +135,3 @@ sp500_vix_rolling_vol %>%
   glance(model_20) %>% 
   select(r.squared)
 ```
-
-
-
-
