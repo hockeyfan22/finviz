@@ -9,10 +9,30 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(blogdown)
+library(tidyverse)
+library(awtools)
+library(showtext)
+library(extrafont)
+library(tidyquant)
+library(janitor)
+library(RcppRoll)
+library(ggthemes)
+library(hrbrthemes)
+library(broom)
+
+font_add_google("IBM Plex Mono", "IBM Plex Mono")
+font_add_google("IBM Plex Sans", "IBM Plex Sans")
+
+showtext_auto()
 ```
 ```{r}
 blogdown::new_site(theme = "zwbetz-gh/cupper-hugo-theme")
 
 blogdown::serve_site()
+
+update.packages(ask = FALSE, checkBuilt = TRUE)
+```
+```{r}
+
 ```
 

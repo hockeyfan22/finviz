@@ -4,6 +4,8 @@ languageCode = "en-us"
 title = "FinViz"
 defaultContentLanguage = "en"
 
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
 [taxonomies]
   tag = "tags"
 
