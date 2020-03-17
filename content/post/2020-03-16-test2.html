@@ -1,0 +1,214 @@
+---
+title: Test2
+author: ''
+date: '2020-03-16'
+slug: test2
+categories: []
+tags: []
+---
+
+
+
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------------------------------------------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## v ggplot2 3.3.0     v purrr   0.3.3
+## v tibble  2.1.3     v dplyr   0.8.5
+## v tidyr   1.0.2     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.5.0</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------------------------------------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(magrittr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;magrittr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     set_names</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     extract</code></pre>
+<pre class="r"><code>library(awtools)
+library(showtext)</code></pre>
+<pre><code>## Warning: package &#39;showtext&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## Loading required package: sysfonts</code></pre>
+<pre><code>## Loading required package: showtextdb</code></pre>
+<pre class="r"><code>library(extrafont)</code></pre>
+<pre><code>## Registering fonts with R</code></pre>
+<pre><code>## 
+## Attaching package: &#39;extrafont&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:showtextdb&#39;:
+## 
+##     font_install</code></pre>
+<pre class="r"><code>library(tidyquant)</code></pre>
+<pre><code>## Warning: package &#39;tidyquant&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## Loading required package: lubridate</code></pre>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     date</code></pre>
+<pre><code>## Loading required package: PerformanceAnalytics</code></pre>
+<pre><code>## Warning: package &#39;PerformanceAnalytics&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## Loading required package: xts</code></pre>
+<pre><code>## Warning: package &#39;xts&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## Loading required package: zoo</code></pre>
+<pre><code>## Warning: package &#39;zoo&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## 
+## Attaching package: &#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## 
+## Attaching package: &#39;xts&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     first, last</code></pre>
+<pre><code>## 
+## Attaching package: &#39;PerformanceAnalytics&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:graphics&#39;:
+## 
+##     legend</code></pre>
+<pre><code>## Loading required package: quantmod</code></pre>
+<pre><code>## Warning: package &#39;quantmod&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## Loading required package: TTR</code></pre>
+<pre><code>## Warning: package &#39;TTR&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;quantmod&#39;:
+##   method            from
+##   as.zoo.data.frame zoo</code></pre>
+<pre><code>## Version 0.4-0 included new data defaults. See ?getSymbols.</code></pre>
+<pre><code>## == Need to Learn tidyquant? ======================================================================================================================
+## Business Science offers a 1-hour course - Learning Lab #9: Performance Analysis &amp; Portfolio Optimization with tidyquant!
+## &lt;/&gt; Learn more at: https://university.business-science.io/p/learning-labs-pro &lt;/&gt;</code></pre>
+<pre class="r"><code>library(janitor)</code></pre>
+<pre><code>## Warning: package &#39;janitor&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## 
+## Attaching package: &#39;janitor&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     chisq.test, fisher.test</code></pre>
+<pre class="r"><code>library(RcppRoll)</code></pre>
+<pre><code>## Warning: package &#39;RcppRoll&#39; was built under R version 3.6.3</code></pre>
+<pre class="r"><code>library(ggthemes)
+library(hrbrthemes)</code></pre>
+<pre><code>## Warning: package &#39;hrbrthemes&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## NOTE: Either Arial Narrow or Roboto Condensed fonts are required to use these themes.</code></pre>
+<pre><code>##       Please use hrbrthemes::import_roboto_condensed() to install Roboto Condensed and</code></pre>
+<pre><code>##       if Arial Narrow is not on your system, please see https://bit.ly/arialnarrow</code></pre>
+<pre class="r"><code>library(broom)</code></pre>
+<pre><code>## Warning: package &#39;broom&#39; was built under R version 3.6.3</code></pre>
+<pre class="r"><code>font_add_google(&quot;IBM Plex Mono&quot;, &quot;IBM Plex Mono&quot;)
+font_add_google(&quot;IBM Plex Sans&quot;, &quot;IBM Plex Sans&quot;)
+
+showtext_auto()</code></pre>
+<div id="the-vix-fear-gauge-is-soaring" class="section level2">
+<h2>The VIX Fear Gauge Is Soaring</h2>
+<p>So reads the start of a Barron’s article from 4 days ago. With fears of the impact of the coronavirus on investor’s minds, markets have been particularly volatile and the CBOE Volatility Index is hitting levels that haven’t been seen since the 2008 crisis. This inagural FinViz blog post will replicate articles by Jonathan Regenstein on his blog, reproduciblefinance.com, investigating the relationship between the VIX and both past and realized volatility of the S&amp;P 500.</p>
+<p>The main finding from those posts, and the AQR work it was derived from, is that the VIX is strictly a measure of recent realized volatility, and nothing more than that.</p>
+<p>To start, we import prices for the S&amp;P 500 and the VIX.</p>
+<pre class="r"><code>symbols = c(&quot;^GSPC&quot;,&quot;^VIX&quot;)
+
+prices_tq = symbols %&gt;% 
+  tq_get(get = &quot;stock.prices&quot;, from = &quot;1990-01-01&quot;)</code></pre>
+<p>As was done in Jonathan’s blog, we create new variables for returns, 20-day volatility, and the annualized 20-day volatility with the below:</p>
+<pre class="r"><code>sp500_vix_rolling_vol = 
+  prices_tq %&gt;%  
+  select(symbol, date, close) %&gt;% 
+  spread(symbol, close) %&gt;% 
+  clean_names() %&gt;% 
+  mutate(sp500_returns = gspc/lag(gspc, 1) - 1,
+         sp500_roll_20 = RcppRoll::roll_sd(sp500_returns, 20, fill = NA, align = &quot;right&quot;),
+         sp500_roll_20_annualized = (round((sqrt(252) * sp500_roll_20 * 100), 2))) %&gt;% 
+  na.omit()</code></pre>
+<p>Let’s take a look at a scatterplot showing the annualized 20-day volatility versus the VIX. We’ll see that there’s a pretty strong relationship between the preceding volatility and the VIX.</p>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;%
+  ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
+  geom_point(colour = &quot;#f88379&quot;, alpha = 0.2) +
+  geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
+  labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
+  scale_y_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_x_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  a_plex_theme()</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/post/2020-03-16-test2_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+Let’s take a look at the past 3 months.</p>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;%
+  group_by(date) %&gt;% 
+  filter(date &gt;= Sys.Date() - months(3)) %&gt;% 
+  ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
+  geom_point(colour = &quot;#f88379&quot;, alpha = 0.2) +
+  geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
+  labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
+  ylim(0,80) +
+  xlim(0,80) +
+  scale_y_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_x_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  a_plex_theme() </code></pre>
+<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
+## replace the existing scale.</code></pre>
+<pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which will
+## replace the existing scale.</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/post/2020-03-16-test2_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+We’ll see that most of the data points are clustered in the bottom left, with low realized volatility and a low VIX. The rest of the data points start to move up and to the right to very high volatility/VIX figures. It’s pretty likely that these are data points in March as markets have grown more fearful - let’s code our data points by month to provide some more clarity.</p>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;%
+  group_by(date) %&gt;% 
+  filter(date &gt;= Sys.Date() - months(3)) %&gt;% 
+  mutate(month = month(date)) %&gt;%
+  mutate(month = case_when(month == 12 ~ &quot;December&quot;,
+                           month == 1 ~ &quot;January&quot;,
+                           month == 2 ~ &quot;February&quot;,
+                           month == 3 ~ &quot;March&quot;)) %&gt;% 
+  ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
+  geom_point(aes(color = month), size = 5, alpha = 0.6) +
+  scale_color_tableau() +
+  geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
+  labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
+  ylim(0,80) +
+  xlim(0,80) +
+  scale_y_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_x_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  a_plex_theme() </code></pre>
+<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
+## replace the existing scale.</code></pre>
+<pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which will
+## replace the existing scale.</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/post/2020-03-16-test2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>As we expected, we’re seeing much higher levels of realized volatility and VIX as the year has progressed. Let’s do one final plot and give special attention to our volatile March data by removing our filter and using color.</p>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;%
+  mutate(indicator = case_when(date&gt;= &#39;2020-03-01&#39; ~ &quot;#f88379&quot;,
+                               TRUE ~ &quot;grey&quot;)) %&gt;% 
+  ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
+  geom_point(aes(color = indicator, size = indicator)) +
+  scale_size_manual(values = c(4,2)) +
+  scale_color_manual(values = c(&quot;#f88379&quot;,&quot;grey&quot;)) +
+  geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
+  labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
+  scale_y_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_x_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  a_plex_theme() +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/post/2020-03-16-test2_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+Some of the March obvservations appear pretty high in both realized volatility and VIX, but for other observations, these don’t appear as drastic in the context of our historical data. We can also run a linear model as is done in the original AQR work, and we find a similar R squared as in that and Jonathan’s work.</p>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;% 
+  do(model_20 = lm(vix ~ sp500_roll_20_annualized, data = .)) %&gt;% 
+  tidy(model_20)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   term                     estimate std.error statistic p.value
+##   &lt;chr&gt;                       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 (Intercept)                 7.80    0.0817       95.5       0
+## 2 sp500_roll_20_annualized    0.755   0.00464     163.        0</code></pre>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;% 
+  do(model_20 = lm(vix ~ sp500_roll_20_annualized, data = .)) %&gt;% 
+  glance(model_20) %&gt;% 
+  select(r.squared)</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   r.squared
+##       &lt;dbl&gt;
+## 1     0.777</code></pre>
+</div>
