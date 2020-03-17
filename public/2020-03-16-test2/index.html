@@ -321,9 +321,9 @@ prices_tq = symbols %&gt;%
   group_by(date) %&gt;% 
   filter(date &gt;= Sys.Date() - months(3)) %&gt;% 
   mutate(month = month(date)) %&gt;%
-  mutate(month = case_when(month == 12 ~ &quot;December&quot;,
-                           month == 1 ~ &quot;January&quot;,
-                           month == 2 ~ &quot;February&quot;,
+  mutate(month = case_when(month == 12 ~ &quot;Dec&quot;,
+                           month == 1 ~ &quot;Jan&quot;,
+                           month == 2 ~ &quot;Feb&quot;,
                            month == 3 ~ &quot;March&quot;)) %&gt;% 
   ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
   geom_point(aes(color = month), size = 5, alpha = 0.6) +
