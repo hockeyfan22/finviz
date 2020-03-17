@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Test2</title>
+      <link>/2020-03-16-test2/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020-03-16-test2/</guid>
+      <description>The VIX Fear Gauge Is SoaringSo reads the start of a Barron’s article from 4 days ago. With fears of the impact of the coronavirus on investor’s minds, markets have been particularly volatile and the CBOE Volatility Index is hitting levels that haven’t been seen since the 2008 crisis. This inagural FinViz blog post will replicate articles by Jonathan Regenstein on his blog, reproduciblefinance.com, investigating the relationship between the VIX and both past and realized volatility of the S&amp;amp;P 500.</description>
+    </item>
+    
+    <item>
       <title>Special Character Test</title>
       <link>/special-character-test/</link>
       <pubDate>Tue, 10 Sep 2019 20:26:08 -0500</pubDate>

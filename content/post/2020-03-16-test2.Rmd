@@ -7,7 +7,7 @@ categories: []
 tags: []
 ---
 
-```{r}
+```{r, include= FALSE}
 
 library(tidyverse)
 library(magrittr)

@@ -32,7 +32,6 @@ font_add_google("IBM Plex Mono", "IBM Plex Mono")
 font_add_google("IBM Plex Sans", "IBM Plex Sans")
 
 showtext_auto()
-getwd()
 ```
 
 ## The VIX Fear Gauge Is Soaring
