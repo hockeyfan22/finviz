@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.67.0" />
-  <link rel="canonical" href="/tags/volatility/">
+  <link rel="canonical" href="/vixvolatility/">
 
   
 
@@ -32,7 +32,7 @@
 
   
   
-  <title>volatility | FinViz</title>
+  <title>The VIX Fear Gauge Is Soaring | FinViz</title>
 </head>
 
   <body>
@@ -168,7 +168,7 @@
       
       
       
-      <a href="/post/" >
+      <a href="/post/" aria-current="page">
         <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
           <use xlink:href="#bookmark"></use>
         </svg>
@@ -181,7 +181,7 @@
       
       
       
-      <a href="/tags/" aria-current="page">
+      <a href="/tags/" >
         <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
           <use xlink:href="#bookmark"></use>
         </svg>
@@ -223,33 +223,162 @@
         <div>
           
   <main id="main">
-    <h1>volatility</h1>
-    <ul class="patterns-list">
+    <h1>
+      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      The VIX Fear Gauge Is Soaring
+    </h1>
+
+    <div class="date">
+      
+      
+      <strong aria-hidden="true">Publish date: </strong>Mar 16, 2020
+      
+        
+      
+    </div>
+
     
-      <li>
-        <h2>
-          <a href="/vixvolatility/">
-            <svg class="bookmark" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-              <use xlink:href="#bookmark"></use>
-            </svg>
-            The VIX Fear Gauge Is Soaring
-          </a>
-        </h2>
-      </li>        
+      <div class="tags">
+        <strong aria-hidden="true">Tags: </strong>
+        <ul aria-label="tags">
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/ggplot/">ggplot</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/volatility/">volatility</a>
+            </li>
+          
+        </ul>
+      </div>
     
-      <li>
-        <h2>
-          <a href="/2020-03-16-test2/">
-            <svg class="bookmark" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-              <use xlink:href="#bookmark"></use>
-            </svg>
-            The VIX Fear Gauge Is Soaring
-          </a>
-        </h2>
-      </li>        
     
-    </ul>
+    
+      
+
+
+    
+
+    
+
+
+<div id="the-vix-fear-gauge-is-soaring" class="section level2">
+<h2>The VIX Fear Gauge Is Soaring</h2>
+<p>So reads the start of a Barron’s article from 4 days ago. With fears of the impact of the coronavirus on investor’s minds, markets have been particularly volatile and the CBOE Volatility Index is hitting levels that haven’t been seen since the 2008 crisis. This inagural FinViz blog post will replicate articles by Jonathan Regenstein on his blog, reproduciblefinance.com, investigating the relationship between the VIX and both past and realized volatility of the S&amp;P 500.</p>
+<p>The main finding from those posts, and the AQR work it was derived from, is that the VIX is strictly a measure of recent realized volatility, and nothing more than that. In the context or the orginal AQR post, this was a critique on commentators claiming that markets were to complacent given the low VIX.</p>
+<p>To start, we import prices for the S&amp;P 500 and the VIX.</p>
+<pre class="r"><code>symbols = c(&quot;^GSPC&quot;,&quot;^VIX&quot;)
+
+prices_tq = symbols %&gt;% 
+  tq_get(get = &quot;stock.prices&quot;, from = &quot;1990-01-01&quot;)</code></pre>
+<p>As was done in Jonathan’s blog, we create new variables for returns, 20-day volatility, and the annualized 20-day volatility with the below:</p>
+<pre class="r"><code>sp500_vix_rolling_vol = 
+  prices_tq %&gt;%  
+  select(symbol, date, close) %&gt;% 
+  spread(symbol, close) %&gt;% 
+  clean_names() %&gt;% 
+  mutate(sp500_returns = gspc/lag(gspc, 1) - 1,
+         sp500_roll_20 = RcppRoll::roll_sd(sp500_returns, 20, fill = NA, align = &quot;right&quot;),
+         sp500_roll_20_annualized = (round((sqrt(252) * sp500_roll_20 * 100), 2))) %&gt;% 
+  na.omit()</code></pre>
+<p>Let’s take a look at a scatterplot showing the annualized 20-day volatility versus the VIX. You’ll notice that there’s a pretty strong relationship between the preceding volatility and the VIX.</p>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;%
+  ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
+  geom_point(colour = &quot;#f88379&quot;, alpha = 0.2) +
+  geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
+  labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
+  scale_y_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_x_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  a_plex_theme()</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/post/vixvolatility_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Let’s take a look at the past 3 months.</p>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;%
+  group_by(date) %&gt;% 
+  filter(date &gt;= Sys.Date() - months(3)) %&gt;% 
+  ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
+  geom_point(colour = &quot;#f88379&quot;, alpha = 0.4, size = 5) +
+  geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
+  labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
+  scale_y_continuous(limits = c(0,80),labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_x_continuous(limits = c(0,80), labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  a_plex_theme() </code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<p><img src="/post/vixvolatility_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>We’ll see that most of the data points are clustered in the bottom left, with low realized volatility and a low VIX. The rest of the data points start to move up and to the right to very high volatility/VIX figures. It’s pretty likely that these are data points in March as markets have grown more fearful - let’s code our data points by month to provide some more clarity.</p>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;%
+  group_by(date) %&gt;% 
+  filter(date &gt;= Sys.Date() - months(3)) %&gt;% 
+  mutate(month = month(date)) %&gt;%
+  mutate(month = case_when(month == 12 ~ &quot;Dec&quot;,
+                           month == 1 ~ &quot;Jan&quot;,
+                           month == 2 ~ &quot;Feb&quot;,
+                           month == 3 ~ &quot;March&quot;)) %&gt;% 
+  ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
+  geom_point(aes(color = month), size = 5, alpha = 0.6) +
+  scale_color_tableau() +
+  geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
+  labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
+  scale_y_continuous(limits = c(0,80),labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_x_continuous(limits = c(0,80), labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  a_plex_theme() </code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<p><img src="/post/vixvolatility_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>As we expected, we’re seeing much higher levels of realized volatility and VIX as the year has progressed. Let’s do one final plot and give special attention to our volatile March data by removing our filter and using color.</p>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;%
+  mutate(indicator = case_when(date&gt;= &#39;2020-03-01&#39; ~ &quot;#f88379&quot;,
+                               TRUE ~ &quot;grey&quot;)) %&gt;% 
+  ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
+  geom_point(aes(color = indicator, size = indicator)) +
+  scale_size_manual(values = c(4,2)) +
+  scale_color_manual(values = c(&quot;#f88379&quot;,&quot;grey&quot;)) +
+  geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
+  labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
+  scale_y_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_x_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  a_plex_theme() +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/post/vixvolatility_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Some of the March obvservations appear pretty high in both realized volatility and VIX, but for other observations, these don’t appear as drastic in the context of our historical data. We can also run a linear model as is done in the original AQR work, and we find a similar R squared as in that and Jonathan’s work.</p>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;% 
+  do(model_20 = lm(vix ~ sp500_roll_20_annualized, data = .)) %&gt;% 
+  tidy(model_20)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   term                     estimate std.error statistic p.value
+##   &lt;chr&gt;                       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 (Intercept)                 7.78    0.0816       95.4       0
+## 2 sp500_roll_20_annualized    0.756   0.00463     163.        0</code></pre>
+<pre class="r"><code>sp500_vix_rolling_vol %&gt;% 
+  do(model_20 = lm(vix ~ sp500_roll_20_annualized, data = .)) %&gt;% 
+  glance(model_20) %&gt;% 
+  select(r.squared)</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   r.squared
+##       &lt;dbl&gt;
+## 1     0.778</code></pre>
+</div>
+
   </main>
+  <div id="disqus-container">
+  
+</div>
+
 
           <footer role="contentinfo">
   <div>

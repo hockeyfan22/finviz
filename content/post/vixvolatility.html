@@ -38,7 +38,7 @@ prices_tq = symbols %&gt;%
   scale_x_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
   a_plex_theme()</code></pre>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="/post/2020-03-16-test2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/post/vixvolatility_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Let’s take a look at the past 3 months.</p>
 <pre class="r"><code>sp500_vix_rolling_vol %&gt;%
   group_by(date) %&gt;% 
@@ -53,7 +53,7 @@ prices_tq = symbols %&gt;%
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 1 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
-<p><img src="/post/2020-03-16-test2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/post/vixvolatility_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>We’ll see that most of the data points are clustered in the bottom left, with low realized volatility and a low VIX. The rest of the data points start to move up and to the right to very high volatility/VIX figures. It’s pretty likely that these are data points in March as markets have grown more fearful - let’s code our data points by month to provide some more clarity.</p>
 <pre class="r"><code>sp500_vix_rolling_vol %&gt;%
   group_by(date) %&gt;% 
@@ -74,7 +74,7 @@ prices_tq = symbols %&gt;%
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 1 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
-<p><img src="/post/2020-03-16-test2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/post/vixvolatility_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>As we expected, we’re seeing much higher levels of realized volatility and VIX as the year has progressed. Let’s do one final plot and give special attention to our volatile March data by removing our filter and using color.</p>
 <pre class="r"><code>sp500_vix_rolling_vol %&gt;%
   mutate(indicator = case_when(date&gt;= &#39;2020-03-01&#39; ~ &quot;#f88379&quot;,
@@ -90,7 +90,7 @@ prices_tq = symbols %&gt;%
   a_plex_theme() +
   theme(legend.position = &quot;none&quot;)</code></pre>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="/post/2020-03-16-test2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/post/vixvolatility_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Some of the March obvservations appear pretty high in both realized volatility and VIX, but for other observations, these don’t appear as drastic in the context of our historical data. We can also run a linear model as is done in the original AQR work, and we find a similar R squared as in that and Jonathan’s work.</p>
 <pre class="r"><code>sp500_vix_rolling_vol %&gt;% 
   do(model_20 = lm(vix ~ sp500_roll_20_annualized, data = .)) %&gt;% 
