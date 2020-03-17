@@ -91,9 +91,9 @@ sp500_vix_rolling_vol %>%
   group_by(date) %>% 
   filter(date >= Sys.Date() - months(3)) %>% 
   mutate(month = month(date)) %>%
-  mutate(month = case_when(month == 12 ~ "December",
-                           month == 1 ~ "January",
-                           month == 2 ~ "February",
+  mutate(month = case_when(month == 12 ~ "Dec",
+                           month == 1 ~ "Jan",
+                           month == 2 ~ "Feb",
                            month == 3 ~ "March")) %>% 
   ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
   geom_point(aes(color = month), size = 5, alpha = 0.6) +

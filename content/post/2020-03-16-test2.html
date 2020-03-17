@@ -47,15 +47,9 @@ prices_tq = symbols %&gt;%
   geom_point(colour = &quot;#f88379&quot;, alpha = 0.2) +
   geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
   labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
-  ylim(0,80) +
-  xlim(0,80) +
-  scale_y_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
-  scale_x_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_y_continuous(limits = c(0,80),labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_x_continuous(limits = c(0,80), labels = function(x){ paste0(x, &quot;%&quot;) }) +
   a_plex_theme() </code></pre>
-<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
-## replace the existing scale.</code></pre>
-<pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which will
-## replace the existing scale.</code></pre>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/post/2020-03-16-test2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>We’ll see that most of the data points are clustered in the bottom left, with low realized volatility and a low VIX. The rest of the data points start to move up and to the right to very high volatility/VIX figures. It’s pretty likely that these are data points in March as markets have grown more fearful - let’s code our data points by month to provide some more clarity.</p>
@@ -72,15 +66,9 @@ prices_tq = symbols %&gt;%
   scale_color_tableau() +
   geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
   labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
-  ylim(0,80) +
-  xlim(0,80) +
-  scale_y_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
-  scale_x_continuous(labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_y_continuous(limits = c(0,80),labels = function(x){ paste0(x, &quot;%&quot;) }) +
+  scale_x_continuous(limits = c(0,80), labels = function(x){ paste0(x, &quot;%&quot;) }) +
   a_plex_theme() </code></pre>
-<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
-## replace the existing scale.</code></pre>
-<pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which will
-## replace the existing scale.</code></pre>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/post/2020-03-16-test2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>As we expected, we’re seeing much higher levels of realized volatility and VIX as the year has progressed. Let’s do one final plot and give special attention to our volatile March data by removing our filter and using color.</p>
