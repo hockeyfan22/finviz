@@ -55,6 +55,7 @@ sp500_vix_rolling_vol =
          sp500_roll_20_annualized = (round((sqrt(252) * sp500_roll_20 * 100), 2))) %>% 
   na.omit()
 ```
+
 Let's take a look at a scatterplot showing the annualized 20-day volatility versus the VIX. We'll see that there's a pretty strong relationship between the preceding volatility and the VIX.
 
 ```{r}
@@ -67,6 +68,7 @@ sp500_vix_rolling_vol %>%
   scale_x_continuous(labels = function(x){ paste0(x, "%") }) +
   a_plex_theme()
 ```
+
 Let's take a look at the past 3 months.
 
 ```{r}
@@ -83,6 +85,7 @@ sp500_vix_rolling_vol %>%
   scale_x_continuous(labels = function(x){ paste0(x, "%") }) +
   a_plex_theme() 
 ```
+
 We'll see that most of the data points are clustered in the bottom left, with low realized volatility and a low VIX. The rest of the data points start to move up and to the right to very high volatility/VIX figures. It's pretty likely that these are data points in March as markets have grown more fearful - let's code our data points by month to provide some more clarity.
 
 ```{r}
@@ -107,6 +110,7 @@ sp500_vix_rolling_vol %>%
 ```
 
 As we expected, we're seeing much higher levels of realized volatility and VIX as the year has progressed. Let's do one final plot and give special attention to our volatile March data by removing our filter and using color.
+
 ```{r}
 sp500_vix_rolling_vol %>%
   mutate(indicator = case_when(date>= '2020-03-01' ~ "#f88379",
@@ -122,6 +126,7 @@ sp500_vix_rolling_vol %>%
   a_plex_theme() +
   theme(legend.position = "none")
 ```
+
 Some of the March obvservations appear pretty high in both realized volatility and VIX, but for other observations, these don't appear as drastic in the context of our historical data. We can also run a linear model as is done in the original AQR work, and we find a similar R squared as in that and Jonathan's work.
 
 ```{r}

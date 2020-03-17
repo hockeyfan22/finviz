@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>volatility on FinViz</title>
+    <link>/tags/volatility/</link>
+    <description>Recent content in volatility on FinViz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/volatility/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The VIX Feat Gauge Is Soaring</title>
+      <link>/2020-03-16-test2/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020-03-16-test2/</guid>
+      <description>The VIX Fear Gauge Is SoaringSo reads the start of a Barron’s article from 4 days ago. With fears of the impact of the coronavirus on investor’s minds, markets have been particularly volatile and the CBOE Volatility Index is hitting levels that haven’t been seen since the 2008 crisis. This inagural FinViz blog post will replicate articles by Jonathan Regenstein on his blog, reproduciblefinance.com, investigating the relationship between the VIX and both past and realized volatility of the S&amp;amp;P 500.</description>
+    </item>
+    
+  </channel>
+</rss>
