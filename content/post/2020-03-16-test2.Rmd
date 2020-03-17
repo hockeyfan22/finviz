@@ -79,10 +79,8 @@ sp500_vix_rolling_vol %>%
   geom_point(colour = "#f88379", alpha = 0.2) +
   geom_smooth(method = 'lm', se = FALSE, color = "light blue", size = .5) +
   labs(title = "Vix Versus 20-Day Realized Volatility", x= "Realized Volatility Preceding 20 Trading Days", y= "VIX") +
-  ylim(0,80) +
-  xlim(0,80) +
-  scale_y_continuous(labels = function(x){ paste0(x, "%") }) +
-  scale_x_continuous(labels = function(x){ paste0(x, "%") }) +
+  scale_y_continuous(limits = c(0,80),labels = function(x){ paste0(x, "%") }) +
+  scale_x_continuous(limits = c(0,80), labels = function(x){ paste0(x, "%") }) +
   a_plex_theme() 
 ```
 
@@ -102,10 +100,8 @@ sp500_vix_rolling_vol %>%
   scale_color_tableau() +
   geom_smooth(method = 'lm', se = FALSE, color = "light blue", size = .5) +
   labs(title = "Vix Versus 20-Day Realized Volatility", x= "Realized Volatility Preceding 20 Trading Days", y= "VIX") +
-  ylim(0,80) +
-  xlim(0,80) +
-  scale_y_continuous(labels = function(x){ paste0(x, "%") }) +
-  scale_x_continuous(labels = function(x){ paste0(x, "%") }) +
+  scale_y_continuous(limits = c(0,80),labels = function(x){ paste0(x, "%") }) +
+  scale_x_continuous(limits = c(0,80), labels = function(x){ paste0(x, "%") }) +
   a_plex_theme() 
 ```
 
