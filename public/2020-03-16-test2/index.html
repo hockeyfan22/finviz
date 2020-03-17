@@ -276,7 +276,7 @@
 <div id="the-vix-fear-gauge-is-soaring" class="section level2">
 <h2>The VIX Fear Gauge Is Soaring</h2>
 <p>So reads the start of a Barron’s article from 4 days ago. With fears of the impact of the coronavirus on investor’s minds, markets have been particularly volatile and the CBOE Volatility Index is hitting levels that haven’t been seen since the 2008 crisis. This inagural FinViz blog post will replicate articles by Jonathan Regenstein on his blog, reproduciblefinance.com, investigating the relationship between the VIX and both past and realized volatility of the S&amp;P 500.</p>
-<p>The main finding from those posts, and the AQR work it was derived from, is that the VIX is strictly a measure of recent realized volatility, and nothing more than that.</p>
+<p>The main finding from those posts, and the AQR work it was derived from, is that the VIX is strictly a measure of recent realized volatility, and nothing more than that. In the context or the orginal AQR post, this was a critique on commentators claiming that markets were to complacent given the low VIX.</p>
 <p>To start, we import prices for the S&amp;P 500 and the VIX.</p>
 <pre class="r"><code>symbols = c(&quot;^GSPC&quot;,&quot;^VIX&quot;)
 
@@ -292,7 +292,7 @@ prices_tq = symbols %&gt;%
          sp500_roll_20 = RcppRoll::roll_sd(sp500_returns, 20, fill = NA, align = &quot;right&quot;),
          sp500_roll_20_annualized = (round((sqrt(252) * sp500_roll_20 * 100), 2))) %&gt;% 
   na.omit()</code></pre>
-<p>Let’s take a look at a scatterplot showing the annualized 20-day volatility versus the VIX. We’ll see that there’s a pretty strong relationship between the preceding volatility and the VIX.</p>
+<p>Let’s take a look at a scatterplot showing the annualized 20-day volatility versus the VIX. You’ll notice that there’s a pretty strong relationship between the preceding volatility and the VIX.</p>
 <pre class="r"><code>sp500_vix_rolling_vol %&gt;%
   ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
   geom_point(colour = &quot;#f88379&quot;, alpha = 0.2) +
@@ -308,7 +308,7 @@ prices_tq = symbols %&gt;%
   group_by(date) %&gt;% 
   filter(date &gt;= Sys.Date() - months(3)) %&gt;% 
   ggplot(aes(x = sp500_roll_20_annualized, y = vix)) +
-  geom_point(colour = &quot;#f88379&quot;, alpha = 0.2) +
+  geom_point(colour = &quot;#f88379&quot;, alpha = 0.4, size = 5) +
   geom_smooth(method = &#39;lm&#39;, se = FALSE, color = &quot;light blue&quot;, size = .5) +
   labs(title = &quot;Vix Versus 20-Day Realized Volatility&quot;, x= &quot;Realized Volatility Preceding 20 Trading Days&quot;, y= &quot;VIX&quot;) +
   scale_y_continuous(limits = c(0,80),labels = function(x){ paste0(x, &quot;%&quot;) }) +
