@@ -8,7 +8,6 @@ tags: ["ggplot", "volatility"]
 ---
 
 ```{r, include= FALSE}
-opts_chunk$set(comment = NA)
 library(tidyverse)
 extrafont::loadfonts()
 library(magrittr)
