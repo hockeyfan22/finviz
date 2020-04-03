@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on FinViz</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on FinViz</description>
+    <title>sentiment on FinViz</title>
+    <link>/tags/sentiment/</link>
+    <description>Recent content in sentiment on FinViz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/sentiment/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,15 +20,6 @@
       <description>##AAII Investor Sentiment Update
 AAII released their Investor Sentiment gauge on April 2nd, showing markets continue to be polarized by the recent volatility. There continues to be more pessism about the market, with Bearish sentiment hovering above 50% for the 4th consecutive week. Bulls are hovering around 30% seen earlier in the year, while market neutralists (16%) continue well below their historical average of 32%.
 The survey this week featured as special question asking how the CARES Act is impacting their economic expectations.</description>
-    </item>
-    
-    <item>
-      <title>The VIX Fear Gauge Is Soaring</title>
-      <link>/vixvolatility/</link>
-      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/vixvolatility/</guid>
-      <description>The VIX Fear Gauge Is SoaringSo reads the start of a Barron’s article from 4 days ago. With fears of the impact of the coronavirus on investor’s minds, markets have been particularly volatile and the CBOE Volatility Index is hitting levels that haven’t been seen since the 2008 crisis. This inagural FinViz blog post will replicate articles by Jonathan Regenstein on his blog, reproduciblefinance.com, investigating the relationship between the VIX and both past and realized volatility of the S&amp;amp;P 500.</description>
     </item>
     
   </channel>

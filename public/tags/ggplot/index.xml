@@ -6,10 +6,21 @@
     <description>Recent content in ggplot on FinViz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/ggplot/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AAII Investor Sentiment: 4/2 Update</title>
+      <link>/2020-04-03-aaii-investor-sentiment-4-2-update/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020-04-03-aaii-investor-sentiment-4-2-update/</guid>
+      <description>##AAII Investor Sentiment Update
+AAII released their Investor Sentiment gauge on April 2nd, showing markets continue to be polarized by the recent volatility. There continues to be more pessism about the market, with Bearish sentiment hovering above 50% for the 4th consecutive week. Bulls are hovering around 30% seen earlier in the year, while market neutralists (16%) continue well below their historical average of 32%.
+The survey this week featured as special question asking how the CARES Act is impacting their economic expectations.</description>
+    </item>
     
     <item>
       <title>The VIX Fear Gauge Is Soaring</title>
