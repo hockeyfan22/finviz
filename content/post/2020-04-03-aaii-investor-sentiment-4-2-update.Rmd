@@ -1,0 +1,54 @@
+---
+title: 'AAII Investor Sentiment: 4/2 Update'
+author: 'FinViz'
+date: '2020-04-03'
+slug: aaii-investor-sentiment-4-2-update
+categories:
+  - R
+tags:
+  - ggplot
+  - sentiment
+---
+
+```{r, include= FALSE}
+library(Quandl)
+library(tidyverse)
+library(magrittr)
+library(awtools)
+library(showtext)
+library(extrafont)
+library(tidyquant)
+library(janitor)
+library(RcppRoll)
+library(ggthemes)
+library(hrbrthemes)
+library(broom)
+
+font_add_google("IBM Plex Mono", "IBM Plex Mono")
+font_add_google("IBM Plex Sans", "IBM Plex Sans")
+
+showtext_auto()
+
+sentiment = Quandl("AAII/AAII_SENTIMENT", api_key="BWz9AL-uszW7M3FdLNeR")
+```
+
+##AAII Investor Sentiment Update
+
+AAII released their Investor Sentiment gauge on April 2nd, showing markets continue to be polarized by the recent volatility. There continues to be more pessism about the market, with Bearish sentiment hovering above 50% for the 4th consecutive week. Bulls are hovering around 30% seen earlier in the year, while market neutralists (16%) continue well below their historical average of 32%.
+
+The survey this week featured as special question asking how the CARES Act is impacting their economic expectations. Two out of five (40%) of respondents say that the aid package is improving their short-term outlook, however, their long-run outlook is still pessimistic. Many within this group believe that the economy will require more aid in the future and that a greater amount should be allocated to small businesses/families. In contrast, 27% of respondents state that their economic outlook has deteriorated following the aid package announcement. Rationale includes unsustainable debt levels and expectations of high inflation in the years to come.
+
+```{r}
+sentiment %>% 
+  filter(Date>'2019-12-31') %>% 
+  select(Date, Bullish, Neutral, Bearish) %>%
+  gather(Bullish, Neutral, Bearish, key = "Sentiment", value = "value") %>% 
+  ggplot(aes(Date, value, group = Sentiment, color = Sentiment)) +
+  geom_line() +
+  geom_point(fill = "white", size = 3, shape = 21, stroke = 1.5) +
+  a_plex_theme() +
+  scale_color_manual(values = c("#ef8a62","#67a9cf", "#808080")) +
+  scale_y_continuous(limits = c(0,0.7), labels = scales::percent) +
+  labs(title = "AAII Investor Sentiment", subtitle = "Pessimism among individual investors about the short-term direction of the stock market \nremains above 50% for the third consecutive week. The latest AAII Sentiment Survey also \nshows neutral sentiment remaining extraordinarily low.", x= "", y= "Percent")
+```
+Source: AAII.com
