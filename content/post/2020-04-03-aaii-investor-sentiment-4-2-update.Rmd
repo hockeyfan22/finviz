@@ -9,8 +9,9 @@ tags:
   - ggplot
   - sentiment
 ---
-knitr::opts_chunk$set 
+
 ```{r, include= FALSE}
+knitr::opts_chunk$set 
 library(Quandl)
 library(tidyverse)
 library(magrittr)
